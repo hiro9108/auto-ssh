@@ -9,9 +9,9 @@ jobs:
     steps:
       - name: test
         run: |
-        echo "$SECRET_KEY" > secret_key
-        chmod 600 secret_key
-        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ../../var/www/html && git pull origin main"
+          echo "$SECRET_KEY" > secret_key
+          chmod 600 secret_key
+          ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ../../var/www/html && git pull origin main"
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       EC2_USER: ${{ secrets.EC2_USER }}
